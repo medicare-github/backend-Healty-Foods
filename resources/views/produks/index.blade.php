@@ -7,10 +7,10 @@
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                
+
                 {{session('sukses')}}
             </div>
-           
+
         @endif
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -31,47 +31,47 @@
                   <th style="width: 10px">#</th>
                   <th>Photo Produk</th>
                   <th >Nama Produk</th>
-                  
+
                   <th >Kategori</th>
                   <th >Harga</th>
                   <th>Nama Toko</th>
-                 
-                  
+
+
                   <th style="width: 180px">Aksi</th>
                 </tr>
                 @php
-                    $no=1; 
-                    
+                    $no=1;
+
                 @endphp
                 @foreach ($data_produks as $item)
-                
+
                 <tr>
                   <td>{{$no++}}</td>
                   <td><img src="{{$item->getProfile()}}" width="40px" height="40px" class="img-circle" alt="User Image"></td>
                   <td>{{$item->nama}}</td>
-                  
+
                   <td>{{$item->kategori->nama}}</td>
                   <td>{{$item->harga}}</td>
                   <td>{{$item->nama_toko}}</td>
-                  
-                 
+
+
                   <td>
                     <form action="{{route('produk.destroy',['id'=>$item->id])}}" method="post">
                         <a class="btn btn-info btn-sm" href="{{route('produk.show',['id'=>$item->id])}}">Detail</a>
                         <a class="btn btn-warning btn-sm" href="{{route('produk.edit',['id'=>$item->id])}}">Edit</a>
-                        
+
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger btn-sm" type="button" onclick="if (confirm('Hapus ?')) this.form.submit();">Delete</button>
-                        
+
                     </form>
-                     
-                      
+
+
                   </td>
                 </tr>
                 @endforeach
 
-                
+
                 </tbody>
             </table>
             </div>
@@ -88,10 +88,10 @@
 
         </div>
         <div class="col-md-1"></div>
-       
+
       </div>
-      
+
     </section>
-   
+
 </section>
 @endsection
